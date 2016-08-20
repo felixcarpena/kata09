@@ -3,23 +3,16 @@ declare(strict_types = 1);
 
 namespace Checkout\Rules;
 
-use Checkout\Item;
-
-final class UnitaryRule
+final class UnitaryRule implements Rule
 {
-    /** @var Item */
-    private $item;
-
     /** @var float */
     private $price;
 
     /**
-     * @param Item $item
      * @param float $price
      */
-    public function __construct(Item $item, float $price)
+    public function __construct(float $price)
     {
-        $this->item = $item;
         $this->price = $price;
     }
 
