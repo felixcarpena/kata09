@@ -5,7 +5,7 @@ interface Rule
 {
     /**
      * @param int $unities
-     * @return float
+     * @return int
      */
-    public function apply(int $unities) : float;
+    public function apply(int $unities) : int;
 }

@@ -9,21 +9,21 @@ final class UnitaryRule implements Rule
     private $price;
 
     /**
-     * @param float $price
+     * @param int $price
      */
-    public function __construct(float $price)
+    public function __construct(int $price)
     {
         $this->price = $price;
     }
 
     /**
      * @param int $unities
-     * @return float
+     * @return int
      */
-    public function apply(int $unities): float
+    public function apply(int $unities): int
     {
         if ($unities <= 0) {
-            return 0.0;
+            return 0;
         }
 
         return $unities * $this->price;

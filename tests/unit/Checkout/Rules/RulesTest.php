@@ -15,7 +15,7 @@ class RulesTest extends TestCase
     {
         $rules = new Rules();
         $fooItem = new Item('Foo');
-        $unitaryRule = new UnitaryRule(2.0);
+        $unitaryRule = new UnitaryRule(2);
 
         $rules->add($fooItem, $unitaryRule);
 
