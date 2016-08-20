@@ -15,9 +15,16 @@ final class Rules
         $this->rules = [];
     }
 
-    public function add(Item $item, Rule $rule)
+    /**
+     * @param Item $item
+     * @param Rule $rule
+     * @return Rules
+     */
+    public function add(Item $item, Rule $rule): self
     {
         $this->rules[$item->getIdentifier()][] = $rule;
+
+        return $this;
     }
 
     /**
