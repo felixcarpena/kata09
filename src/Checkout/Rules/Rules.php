@@ -46,7 +46,7 @@ final class Rules
         $itemRules = $this->get($item);
 
         if (empty($itemRules)) {
-            throw new \RuntimeException('No rules can be applied to this item');
+            return 0;
         }
 
         $total = 0;
@@ -60,7 +60,7 @@ final class Rules
             }
         }
 
-        if($unities != 0){
+        if ($unities != 0) {
             throw new \RuntimeException('No rules can be applied for the unities requested');
         }
 

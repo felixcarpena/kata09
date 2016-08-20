@@ -65,11 +65,11 @@ class RulesTest extends TestCase
     }
 
     /** @test */
-    public function check_exception_when_no_rules_are_defined()
+    public function when_no_rules_are_defined_should_return_zero()
     {
         $rules = (new Rules());
-        $this->expectException(\RuntimeException::class);
-        $rules->calculate(new Item('Foo'), 10);
+        $total = $rules->calculate(new Item('Foo'), 10);
+        $this->assertEquals(0, $total);
     }
 
     /** @test */
