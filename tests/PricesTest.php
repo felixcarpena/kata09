@@ -1,6 +1,11 @@
 <?php
 declare(strict_types = 1);
 
+namespace Tests;
+
+use Checkout\Checkout;
+use Checkout\Item;
+use Checkout\Rules\RulesFactory;
 use PHPUnit\Framework\TestCase;
 
 class PricesTest extends TestCase
@@ -28,7 +33,7 @@ class PricesTest extends TestCase
     /** @test */
     public function checkout_incremental(): void
     {
-        $checkout = new Cehckout(Rules::create());
+        $checkout = new Checkout(Rules::create());
         $this->assertEquals(0, $checkout->total());
 
         $checkout->scan(new Item("A"));
@@ -50,10 +55,11 @@ class PricesTest extends TestCase
     //---[ Helpers ]--------------------------------------------------------------------------------------------------//
     private function price(string $price): int
     {
-        $checkout = new Cehckout(Rules::create());
+        $checkout = new Checkout(RulesFactory::create());
         foreach (str_split($price) as $itemName) {
             $checkout->scan(new Item($itemName));
         }
+
         return $checkout->total();
     }
 }
