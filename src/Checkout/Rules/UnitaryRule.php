@@ -1,11 +1,11 @@
 <?php
 declare(strict_types = 1);
 
-namespace Checkout\Strategies;
+namespace Checkout\Rules;
 
 use Checkout\Item;
 
-final class UnitaryStrategy
+final class UnitaryRule
 {
     /** @var Item */
     private $item;
