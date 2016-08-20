@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 class PricesTest extends TestCase
 {
     /** @test */
-    public function checkout() :void
+    public function checkout(): void
     {
         $this->assertEquals(0, $this->price(""));
         $this->assertEquals(50, $this->price("A"));
@@ -33,7 +33,7 @@ class PricesTest extends TestCase
     /** @test */
     public function checkout_incremental(): void
     {
-        $checkout = new Checkout(Rules::create());
+        $checkout = new Checkout(RulesFactory::create());
         $this->assertEquals(0, $checkout->total());
 
         $checkout->scan(new Item("A"));
