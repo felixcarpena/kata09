@@ -35,4 +35,35 @@ final class Rules
     {
         return $this->rules[$item->getIdentifier()] ?? [];
     }
+
+    /**
+     * @param Item $item
+     * @param int $unities
+     * @return int
+     */
+    public function calculate(Item $item, int $unities): int
+    {
+        $itemRules = $this->get($item);
+
+        if (empty($itemRules)) {
+            throw new \RuntimeException('No rules can be applied to this item');
+        }
+
+        $total = 0;
+        foreach ($itemRules as $rule) {
+            $total += $rule->apply($unities);
+
+            $unities -= $rule->appliedTo($unities);
+
+            if ($unities == 0) {
+                break;
+            }
+        }
+
+        if($unities != 0){
+            throw new \RuntimeException('No rules can be applied for the unities requested');
+        }
+
+        return $total;
+    }
 }
