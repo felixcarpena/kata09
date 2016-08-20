@@ -21,4 +21,11 @@ class UnitaryRuleTest extends TestCase
         $strategy = new UnitaryRule(2);
         $this->assertEquals(0, $strategy->apply(-2));
     }
+
+    /** @test */
+    public function check_that_this_rule_could_be_applied_to_all_unities()
+    {
+        $strategy = new UnitaryRule(1);
+        $this->assertEquals(2, $strategy->appliedTo(2));
+    }
 }

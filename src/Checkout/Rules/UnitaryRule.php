@@ -28,4 +28,13 @@ final class UnitaryRule implements Rule
 
         return $unities * $this->price;
     }
+
+    /**
+     * @param int $unities
+     * @return int
+     */
+    public function appliedTo(int $unities): int
+    {
+        return $unities;
+    }
 }
