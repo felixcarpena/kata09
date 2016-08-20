@@ -3,17 +3,22 @@ declare(strict_types = 1);
 
 namespace Checkout\Rules;
 
-final class DiscountOverThreeUnitiesRule implements Rule
+final class DiscountOverUnitiesRule implements Rule
 {
     /** @var float */
     private $price;
 
+    /** @var int */
+    private $unities;
+
     /**
+     * @param int $unities
      * @param int $price
      */
-    public function __construct(int $price)
+    public function __construct(int $unities, int $price)
     {
         $this->price = $price;
+        $this->unities = $unities;
     }
 
     /**
@@ -22,7 +27,7 @@ final class DiscountOverThreeUnitiesRule implements Rule
      */
     public function apply(int $unities): int
     {
-        return $unities < 3 ? 0 : intdiv($unities, 3) * $this->price;
+        return $unities < $this->unities ? 0 : intdiv($unities, $this->unities) * $this->price;
     }
 
     /**
@@ -31,6 +36,6 @@ final class DiscountOverThreeUnitiesRule implements Rule
      */
     public function appliedTo(int $unities): int
     {
-        return $unities < 3 ? 0 : $unities - intdiv($unities, 3);
+        return $unities < $this->unities ? 0 : intdiv($unities, $this->unities) * $this->unities;
     }
 }
