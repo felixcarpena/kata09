@@ -1,14 +1,14 @@
 <?php
 declare(strict_types = 1);
 
-namespace Tests;
+namespace Tests\Unit\Checkout;
 
 use Checkout\Checkout;
 use Checkout\Item;
 use Checkout\Rules\RulesFactory;
 use PHPUnit\Framework\TestCase;
 
-class PricesTest extends TestCase
+class CheckoutTest extends TestCase
 {
     /** @test */
     public function checkout(): void
